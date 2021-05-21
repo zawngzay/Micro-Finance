@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User Registration</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+    
+    <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(
+			function() {
+				$('#conpass').on(
+						'change',
+						function() {
+							var password = $("#password").val();
+							var conpassword=$("#conpass").val();
+							if(password != conpassword)
+								{
+								$("#errorMessage").css("color", "red");
+								$("#errorMessage").html(
+
+								"Password do not match");
+								$("#conpass").val("");
+								}
+							else{
+								$("#errorMessage").empty();
+							}
+
+						});
+			});
+</script>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+     <nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+		
+        <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+           
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="page-header">
+                      <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-info text-white mr-2">
+                          <i class="mdi mdi-home"></i>
+                        </span> User Registration
+                      </h3>
+                      
+                  
+                    </div>
+                   
+                    <div th:if="${email}">
+                            <div class="alert alert-danger">
+                              Email already exist!!
+                            </div>
+                        </div>
+                         <div th:if="${nrc}">
+                            <div class="alert alert-danger">
+                             NRC already exist!!
+                            </div>
+                        </div>
+                       
+                     <form class="forms-sample" th:action="@{/userRegister}" method="post" th:object="${userBean}">
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputUsername2" class="col-sm-2 col-form-label">User Name *</label>
+                        <div class="col-sm-4 ">
+                          <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Name" th:field="*{name}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="password" class="col-sm-2 col-form-label">Password *</label>
+                        <div class="col-sm-4">
+                          <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="conpass" class="col-sm-2 col-form-label">Confirmed Password *</label>
+                        <div class="col-sm-4">
+                          <input type="password" class="form-control" id="conpass" placeholder="Confirmed Password" th:field="*{conPass}" >
+                           <br>
+                          <p th:if="${#fields.hasErrors('conPass')}" th:errors="*{conPass}"
+														style="color: red;"></p>
+														<p id="errorMessage"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Phone No*</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Phone No" th:field="*{phone}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Email *</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Email" th:field="*{email}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">NRC *</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="NRC" th:field="*{nrc}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('nrc')}" th:errors="*{nrc}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Position *</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Position" th:field="*{position}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('position')}" th:errors="*{position}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleSelectGender" class="col-sm-2 col-form-label">Role Name *</label>
+                        <div class="col-sm-4">
+                          <select  th:field="*{role}"  class="form-control form-control-sm" id="exampleFormControlSelect3" >
+                           <option th:if="${role.roleName}!=Master" th:each="role:${session.role}" th:value="${role.roleId}" th:text="${role.roleName}"/>
+                          </select>
+                           <br>
+                          <p th:if="${#fields.hasErrors('role')}" th:errors="*{role}"
+														style="color: red;"></p>
+                        </div>  
+                      </div>
+                       <!--<div class="form-group row">
+                        <div class="col-sm-3"></div>
+                       
+                        <label for="exampleSelectGender" class="col-sm-2 col-form-label">Permission</label>
+                         <div class="col-sm-6">
+                         <th:block th:each="permission :${permission}">
+                         
+                        <div class="form-check" >
+                        	                        	
+                                                    <input type="checkbox" class="form-check-input" th:value="${permission.id}" 
+                            th:field="*{permission}"  >
+                                                 <label class="form-check-label" th:text="${permission.perName}">       </label>
+                        </div>
+                      
+                      </th:block>
+                      </div>
+                      </div> !-->
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleSelectGender" class="col-sm-2 col-form-label">Permission</label>
+                        <div class="col-sm-2" >
+                        <div class="form-check " >
+                          <label class="form-check-label "></label>
+                            <input type="checkbox" class="form-check-input" name="optionsRadios" th:field="*{permission}" id="optionsRadios2" value="Admin" th:checked="${chec}"> Admin 
+                       
+                          
+                        </div>
+                      </div>
+                      <div class="col-sm-2" >
+                        <div class="form-check" >
+                          <label class="form-check-label "></label>
+                            <input type="checkbox" class="form-check-input " name="optionsRadios" th:field="*{permission}" id="optionsRadios2" value="CRM" >CRM
+                        </div>
+                      </div>
+                      <div class="col-sm-2" >
+                        <div class="form-check " >
+                          <label class="form-check-label "></label>
+                            <input type="checkbox" class="form-check-input " name="optionsRadios" th:field="*{permission}" id="optionsRadios2" value="Loan" > Loan
+                        </div>
+                      </div>
+                      
+                        
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-3"></div>
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-2" >
+                        <div class="form-check " >
+                          <label class="form-check-label "></label>
+                            <input type="checkbox" class="form-check-input " name="optionsRadios" th:field="*{permission}" id="optionsRadios2" value="Account" >Account
+                        </div>
+                      </div>
+                      <div class="col-sm-2" >
+                        <div class="form-check" >
+                          <label class="form-check-label "></label>
+                            <input type="checkbox" class="form-check-input " name="optionsRadios" th:field="*{permission}" id="optionsRadios2" value="Transaction" >Transaction
+                        </div>
+                      </div>
+                      <div class="col-sm-2" >
+                        <div class="form-check " >
+                          <label class="form-check-label "></label>
+                            <input type="checkbox" class="form-check-input " name="optionsRadios" th:field="*{permission}" id="optionsRadios2" value="COA" >COA
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-3"></div>
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-2" >
+                        <div class="form-check " >
+                          <label class="form-check-label "></label>
+                            <input type="checkbox" class="form-check-input " name="optionsRadios" th:field="*{permission}" id="optionsRadios2" value="Blacklist" > Blacklist 
+                        </div>
+                      </div>
+                      <div class="col-sm-2" >
+                        <div class="form-check" >
+                          <label class="form-check-label "></label>
+                            <input type="checkbox" class="form-check-input " name="optionsRadios" th:field="*{permission}" id="optionsRadios2" value="Reports" >Reports
+                        </div>
+                      </div>
+                    </div>
+                       <br>
+                          <p th:if="${#fields.hasErrors('permission')}" th:errors="*{permission}"
+														style="color: red;margin-left:480px;"></p>
+														<br>
+                    <div class="form-group row">
+                        <div class="col-sm-5"></div>
+                      <div class="col-sm-7">
+                        <button type="submit" class="btn btn-gradient-primary mr-2">Add</button>
+                        <a th:href="@{/user}" class="btn btn-secondary mr-2" >Back</a>
+                        <!-- <a href="MFI_CCM_01.html"  class="btn btn-light"> Back </a> -->
+                        <!-- <a href="MFI_CCM_01.html"><button  type="button" class="btn btn-secondary">BACK</button></a> -->
+                      </div>
+                     
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+            
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © Team T.E.A.M 2020</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

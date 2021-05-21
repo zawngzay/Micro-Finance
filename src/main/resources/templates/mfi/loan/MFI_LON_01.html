@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Credit Calculation</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    	  $("#crmSearchButton").click(function(){
+    	   var crmSearch=$("#crmSearch").val();
+    	   window.location.href="/searchCRM?crmSearch="+crmSearch; 
+    	  });
+    	});
+    </script>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+                <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+          
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="page-header">
+                      <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-info text-white mr-2">
+                          <i class="mdi mdi-home"></i>
+                        </span> Credit Calculation
+                      </h3>
+                      
+                  
+                    </div>
+                   
+                     <div th:if="${notfound}">
+                            <div class="alert alert-danger">
+                             Data Not Found !!!
+                            </div>
+                        </div>
+                        <div th:if="${delstatus}">
+                            <div class="alert alert-danger">
+                             This Customer is in the Blacklist !!!
+                            </div>
+                        </div>
+                    <div class="form-group">
+                      <div class="input-group" >
+                        <input type="text" class="form-control col-sm-3" th:value="${crmSearch}"     id="crmSearch" placeholder="Customer name,nrc,code,phone" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                          <button class="btn btn-sm btn-gradient-primary" type="button" id="crmSearchButton">Search</button>
+                        </div>
+                      </div>
+                    </div>
+
+                          <table class="table table-hover ">
+                            <thead>
+                              <tr>
+                                 <th> Customer Code </th>
+                                <th> Customer Name </th>
+                                <th>Phone </th>
+                                <th> Email </th>
+                                <th> NRC </th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr  th:each="customerList: ${customerList}">
+                              <td th:text=${customerList.customerCode}></td>
+                                <td th:text=${customerList.name}></td>
+                                <td  th:text=${customerList.phone}></td>
+                                <td th:text=${customerList.email}></td>
+                                <td th:text=${customerList.nrc}></td>
+                                <td>
+                                   <a th:href="@{/caculateCreditScore/{id}(id=${customerList.customerCode})}" ><span class="mdi mdi-diamond " title="Loan Registration"></a>&nbsp;&nbsp;
+                                   
+                               </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+         
+          <!-- partial -->
+          <nav th:replace="/fragment/footer.html::footer"></nav>        </div>
+       
+        <!-- main-panel ends -->
+      </div>
+     
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/dashboard.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>User Search</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+</head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+           
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="page-header">
+                      <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-info text-white mr-2">
+                          <i class="mdi mdi-home"></i>
+                        </span> User Search
+                      </h3>
+                      
+                  
+                    </div>
+                    <div th:if="${search}">
+                            <div class="alert alert-danger">
+                               Data Not Found
+                            </div>
+                        </div>
+                    <div th:if="${reg}">
+                            <div class="alert alert-info">
+                                Register Successfully
+                            </div>
+                        </div>
+                        
+                        <div th:if="${edit}">
+                            <div class="alert alert-info">
+                                Update Successfully
+                            </div>
+                        </div>
+                       
+                    
+                     <p th:text=" ${#request.getParameter('mesg')}" style="color: blue; font-size:25px;"></p>
+                    <form th:action="@{/userSearch}" method="post" th:object="${userSearch}"> 
+                    <div class="form-group" >
+                      <div class="input-group" >
+                        <input th:field="*{name}" type="text" class="form-control col-sm-3" placeholder="User Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                        <input type="submit" value="Search" class="btn btn-sm btn-gradient-primary">
+                         <!-- <a th:href="@{/crmSearch}" class="btn btn-sm btn-gradient-primary">Search</a> -->
+                          
+                        </div>
+                        <div class="col-sm-2  ">
+                          <a th:href="@{/setupuserRegister}" class="btn btn-gradient-info" style="height: 46px;">Add</a>
+                         
+                        </div>
+                        
+                      </div>
+                      
+                     
+                    </div>
+                    </form>
+
+
+                          <table class="table table-hover ">
+                            <thead>
+                              <tr>
+                                
+                                <th> User Name </th>
+                                <th>Phone </th>
+                                <th> Email </th>
+                                <th> NRC </th>                               
+                                <!-- <th> Permission </th> -->
+                                <th> Role </th>
+                                <th> Position </th>
+                                <th>Action</th>
+
+
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                               <tr th:each="list:${userList}">
+                        <td th:text="${list.name}"></td>
+                        <td th:text="${list.phone}"></td>
+                        <td th:text="${list.email}"></td>
+                        <td th:text="${list.nrc}"></td>
+                       
+                        <td th:text="${list.role.roleName}"></td> 
+                        <td th:text="${list.position}"></td>
+                        <th>
+                        <a th:href="@{userEdit/{id}(id=${list.user_id})}"><span class="mdi mdi-lead-pencil" title="Edit"></a></td>
+                        </th>
+                      
+
+
+                            </tbody>
+                          </table>
+
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer th:replace="/fragment/footer.html::footer"></footer>
+
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

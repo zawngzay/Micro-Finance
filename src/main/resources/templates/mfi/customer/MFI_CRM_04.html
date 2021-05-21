@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Customer Detail</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+       <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+
+        <!-- partial -->
+         <div class="main-panel">
+          <div class="content-wrapper">
+            
+            <div class="row">
+
+              <div class="col-md-12 grid-margin stretch-card">
+
+                <div class="card">
+                  <div class="card-body">
+                    <div class="page-header">
+                      <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-info text-white mr-2">
+                          <i class="mdi mdi-home"></i>
+                        </span> Customer Detail 
+                      </h3>
+
+                    </div>
+                    <br><br>
+                    <form class="forms-sample">
+                    <div class="form-group row">
+                      
+                       <div class="col-md-6 border-right">
+                        <div class="border-bottom p-2">
+                          <label for="custCo" class="col-md-4">Code</label>
+                          <span class="col-md-1">-</span>
+                          <span id="custCo" class="col-md-4" th:text="${crmDetail.customerCode}"></span>
+                        </div>
+                        <div class="border-bottom p-2">  
+                        <label for="custName"  class="col-md-4">Name</label>
+                        <span class="col-md-1">-</span>
+                          <span id="custName"  class="col-md-4" th:text="${crmDetail.name}"></span>
+                        </div>
+                        <div class="border-bottom p-2">       
+                        <label for="custNRC"  class="col-md-4">NRC</label>
+                        <span class="col-md-1">-</span>
+                          <span id="custNRC"  class="col-md-5" th:text="${crmDetail.nrc}"></span>
+                          </div>
+                        <div class="border-bottom p-2">              
+                        <label for="phNo"  class="col-md-4">Phone No</label>
+                        <span class="col-md-2">-</span>
+                          <span id="phNo"  class="col-md-4" th:text="${crmDetail.phone}"></span>
+                        </div>
+                       
+                        <div class="border-bottom p-2">
+                        <label for="dob"  class="col-md-4">DOB</label>
+                        <span class="col-md-2">-</span>
+                          <span id="dob"  class="col-md-4" th:text="${crmDetail.dob}"></span>
+                        </div>
+                        <div class=" border-bottom p-2">
+                        <label for="gender"  class="col-md-4">Gender</label>
+                        <span class="col-md-2">-</span>
+                          <span id="gender"  class="col-md-4" th:text="${crmDetail.gender}"></span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="border-bottom p-2" >
+                          <label for="address" class="col-md-5">Address</label>
+                          <span class="col-md-2">-</span>
+                          <span id="address" class="col-md-4" th:text="${crmDetail.address}"></span>             
+                        </div>
+                        <div class="border-bottom p-2">
+                          <label for="currentJob" class="col-md-5">Current Job</label>
+                          <span class="col-md-2">-</span>
+                            <span id="currentJob" class="col-md-4" th:text="${crmDetail.currentJob}">IT</span>           
+                        </div>
+                        <div class="border-bottom p-2">
+                          <label for="position" class="col-md-5">Position</label>
+                          <span class="col-md-2">-</span>
+                          <span id="position" class="col-md-4" th:text="${crmDetail.positon}"></span>               
+                        </div>
+                        <div class="border-bottom p-2">
+                          <label for="comName" class="col-md-5">Company Name</label>
+                          <span class="col-md-2">-</span>
+                          <span id="comName" class="col-md-4" th:text="${crmDetail.companyName}">Ace Inspiration</span>         
+                        </div>
+                        <div class="border-bottom p-2">
+                          <label for="monIncome" class="col-md-5">Monthly Income</label>
+                          <span class="col-md-2">-</span>
+                            <span id="monIncome" class="col-md-4" th:text="${crmDetail.monthlyIncome}">230000</span>        
+                        </div>
+                        
+                        <div class=" border-bottom p-2">
+                          <label for="status" class="col-md-5">Delete Status</label>
+                          <span class="col-md-2">-</span>
+                            <span id="status" th:text="${crmDetail.delStatus}" class="col-md-4">Active</span>         
+                        </div>
+                      </div>
+               
+                 
+                    </div>
+                    
+                      <div class="form-group row">       
+                      <div class="col-sm-7">
+                        <a th:href="@{/customerSearch}" class="btn btn-secondary mr-2" >Back</a>
+                      </div>
+                     
+                  
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+         
+          <!-- partial -->
+        </div>
+        <footer th:replace="/fragment/footer.html::footer"></footer>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

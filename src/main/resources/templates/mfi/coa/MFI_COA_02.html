@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>COA </title>
+<!-- plugins:css -->
+<link rel="stylesheet"
+	href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet"
+	href="../../assets/vendors/css/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- endinject -->
+<!-- Layout styles -->
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- End layout styles -->
+<link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+</head>
+<body>
+	<div class="container-scroller">
+		<!-- partial:../../partials/_navbar.html -->
+		<nav th:replace="/fragment/header.html::header"></nav>
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:../../partials/_sidebar.html -->
+
+			<nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+			<!-- partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+					<div class="row">
+						<div class="col-md-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="page-header">
+										<h3 class="page-title">
+											<span
+												class="page-title-icon bg-gradient-info text-white mr-2">
+												<i class="mdi mdi-home"></i>
+											</span> COA
+										</h3>
+
+
+									</div>
+									<div class="form-group">
+										<div class="input-group">
+											<!-- <input type="text" class="form-control col-sm-3"
+												placeholder="COA Id" aria-label="Recipient's username"
+												aria-describedby="basic-addon2"> -->
+											<!-- <div class="input-group-append">
+												<button class="btn btn-sm btn-gradient-primary"
+													type="button">Search</button>
+											</div> -->
+											<!-- <div class="col-sm-2  ">
+												<a th:href="@{/addCoa}" class="btn btn-gradient-info"
+													style="height: 46px;">Add</a>
+
+
+											</div> -->
+										</div>
+
+
+									</div>
+
+									<table class="table table-hover table-responsive">
+										<thead>
+											<tr>
+												<th>COA Id</th>
+												<th>Bank Id</th>
+												<th>Gl Type</th>
+												<th>Account Number</th>
+												<th>Amount</th>
+												<th>Create User</th>
+												<th>Create Date</th>
+												<th>Update User</th>
+												<th>Update Date</th>
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="coa: ${coa}">
+												<td th:text="${coa.CoaId}"></td>
+												<td th:text="${coa.bankId}"></td>
+												<td th:text="${coa.glType}"></td>
+												<td th:text="${coa.accountNumber}"></td>
+												<td th:text="${#numbers.formatDecimal(coa.amount,0,3)}"></td>
+												<td th:text="${coa.createdUser}"></td>
+												<td th:text="${coa.createdDate}"></td>
+												<td th:text="${coa.updateUser}"></td>
+												<td th:text="${coa.updateDate}"></td>
+
+											</tr>
+
+
+
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- content-wrapper ends -->
+					<!-- partial:../../partials/_footer.html -->
+
+					<!-- partial -->
+				</div>
+				<footer th:replace="/fragment/footer.html::footer"></footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page -->
+	<!-- End plugin js for this page -->
+	<!-- inject:js -->
+	<script src="../../assets/js/off-canvas.js"></script>
+	<script src="../../assets/js/hoverable-collapse.js"></script>
+	<script src="../../assets/js/misc.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page -->
+	<script src="../../assets/js/file-upload.js"></script>
+	<!-- End custom js for this page -->
+</body>
+</html>

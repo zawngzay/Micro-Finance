@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Saving Account Details</title>
+<!-- plugins:css -->
+<link rel="stylesheet"
+	href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet"
+	href="../../assets/vendors/css/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- endinject -->
+<!-- Layout styles -->
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- End layout styles -->
+<link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+<script
+	src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+	integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+	integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet"
+	href="  https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+<link rel="stylesheet"
+	href=" https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css">
+<script>
+	$(document).ready(function() {
+		var table = $('#accounttransactionTable').DataTable({
+			fixedHeader : true
+		});
+	});
+</script>
+
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+     <nav th:replace="/fragment/header.html::header"></nav>
+     
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+       <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+       
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="page-header">
+                      <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-info text-white mr-2">
+                          <i class="mdi mdi-home"></i>
+                        </span>  Saving Account Detail
+                      </h3>
+                      
+                  
+                    </div>
+                    <br>
+                   <form class="forms-sample">
+                    <div class="row">
+                      
+                        <div class="col-md-6 border-right">
+                          <div class="border-bottom p-2">
+                            <label for="custCo" class="col-md-5">Customer Name</label>
+                            <span class="col-md-2">-</span>
+                            <span id="custCo" class="col-md-4" th:text="${account.customer.name}"></span>
+                           
+                            
+                          </div>
+                          <div class="border-bottom p-2">
+                            <label for="custCo" class="col-md-5">NRC</label>
+                            <span class="col-md-2">-</span>
+                            <span id="custCo" class="col-md-5" th:text="${account.customer.nrc}"></span>
+                          </div>
+                          <div class="border-bottom p-2">
+                            <label for="custCo" class="col-md-5">Phone</label>
+                            <span class="col-md-2">-</span>
+                            <span id="custCo" class="col-md-5" th:text="${account.customer.phone}"></span>
+                          </div>
+                          
+                        </div>
+                        <div class="col-md-6 border-right">
+                         <div class="border-bottom p-2">
+                            <label for="custCo" class="col-md-5">Address</label>
+                            <span class="col-md-2">-</span>
+                            <span id="custCo" class="col-md-5" th:text="${account.customer.address}"></span>
+                          </div>
+                          <div class="border-bottom p-2">
+                            <label for="custCo" class="col-md-5">Account Number</label>
+                            <span class="col-md-2">-</span>
+                            <span id="custCo" class="col-md-5" th:text="${account.savingAccountNumber}"></span>
+                          </div>
+                          <div class="border-bottom p-2">
+                            <label for="custCo" class="col-md-5">Balance</label>
+                            <span class="col-md-2">-</span>
+                            <span id="custCo" class="col-md-5" th:text="${account.balance}">100000</span>
+                          </div>
+                        </div>
+                       
+                    </form>
+                     
+                   
+                   
+                  </div>
+                  <br><br>
+                  <div class="form-group row">       
+                    <div class="col-sm-12">
+                    
+                      <!--  <a th:if="${account.accountStatus}==true" th:href="@{/closeSavingAccount/{number}(number=${account.savingAccountNumber})}" class="btn btn-gradient-danger mr-2"  onclick="return window.confirm('Are you sure to close this account?')">CLOSE</a>
+                       <a th:if="${account.accountStatus}==false" th:href="@{/reopenSavingAccount/{number}(number=${account.savingAccountNumber})}" class="btn btn-gradient-success mr-2" onclick="return window.confirm('Are you sure to reactivate this account?')" >RE-ACTIVATE</a> -->
+                       
+                        <a th:if="${account.accountStatus}==true"><button type="button" class="btn btn-gradient-danger mr-2"
+											data-toggle="modal" data-target="#exampleModalCenter">
+											DEACTIVATE</button></a>
+
+										<!-- Modal -->
+										<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalCenterTitle"
+											aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered"
+												role="document">
+												<div class="modal-content">
+													<div class="modal-header"></div>
+													<div class="modal-body">
+														<h4 style="text-align: center;">Are You Sure To
+															Deactivate !!!</h4>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Cancel</button>
+														<a  th:href="@{/closeSavingAccount/{number}(number=${account.savingAccountNumber})}" class="btn btn-gradient-danger mr-2" >DEACTIVATE</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<a th:if="${account.accountStatus}==false"><button type="button"  class="btn btn-gradient-success mr-2"
+											data-toggle="modal" data-target="#exampleModalCenter1">
+											REACTIVATE</button></a>
+
+										<!-- Modal -->
+										<div class="modal fade" id="exampleModalCenter1" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalCenterTitle"
+											aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered"
+												role="document">
+												<div class="modal-content">
+													<div class="modal-header"></div>
+													<div class="modal-body">
+														<h4 style="text-align: center;">Are You Sure To
+															Reactivate !!!</h4>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Cancel</button>
+														<a  th:href="@{/reopenSavingAccount/{number}(number=${account.savingAccountNumber})}" class="btn btn-gradient-success mr-2" >REACTIVATE</a>
+													</div>
+												</div>
+											</div>
+										</div>
+                       <a th:href="@{/savingAccount}" class="btn btn-secondary" >BACK</a>
+                    </div>
+                   
+                  </div>
+                    <br><br>
+                    <div class="form-group">
+                      <form class="form-inline" th:action="@{/savingAccountTransactionSearch/{number}(number=${account.savingAccountNumber})}" th:method="post">
+                        <label for="inlineFormInputName2" class="col-sm-2 col-form-label">Start Date</label>
+                        <input name="start" type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" 
+                        placeholder="start date" required="required">
+                        <!-- <div class="input-group mb-2 mr-sm-4">
+                        </div> -->
+                  
+                    <label for="inlineFormInputName2" class="col-sm-2 col-form-label">End Date</label>
+                    <input name="end" type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputGroupUsername2" 
+                    placeholder="end date" required="required">
+                
+                  <div class="input-group mb-2 mr-sm-4">
+                  </div>
+
+                  <input type="submit" class="btn btn-gradient-primary mb-2" value="Search"></button>
+                </form>
+                      <br>
+                      <div class="form-group">
+                        <h4>Transation History</h4>
+                      </div>
+                   
+                     <table id="accounttransactionTable"
+					class="table table-hover ">
+                        <thead>
+                          <tr>
+                          <th>NO</th>
+                          <th>Transaction Date</th>
+                          <th>Transaction Description</th>
+                          <th>Debit</th>
+                          <th>Credit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr th:each="list,no : ${trasactionList}">
+                          <td th:text="${no.index + 1}"></td>
+                          <td th:text="${list.createdDate}"></td>
+                          <td th:text="${list.narration}"></td>
+                          
+                          <td th:if="${list.transactionType} == Debit" th:text="${list.amount}"></td>
+                          <td th:unless="${list.transactionType}!= Debit">-</td>
+                          
+                          
+                          <td th:if="${list.transactionType} == Credit">-</td>
+                          <td th:unless="${list.transactionType}!= Credit" th:text="${list.amount}"></td>
+                         
+                        </tr>   
+                                                                                   
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+         
+           <!-- partial -->
+        </div>
+        </div>
+        <!-- main-panel ends -->
+        <footer th:replace="/fragment/footer.html::footer"></footer>
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    
+    <!-- End custom js for this page -->
+  </body>
+</html>

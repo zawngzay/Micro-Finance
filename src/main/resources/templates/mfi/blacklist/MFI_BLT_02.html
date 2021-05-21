@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Blacklist Searchs</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        
+        $("#searchBk").click(function() {
+        	/* console.log("thi lksdjfl;kj") */
+        	/* alert("hi") */
+        var bkNameorNRC=$("#blacklistSearch").val();
+        window.location.href="/searchingBlackList?bkNameorNRC="+bkNameorNRC;
+        
+        })
+
+        });
+    
+    </script>
+
+</head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        	<nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+        
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="page-header">
+                      <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-info text-white mr-2">
+                          <i class="mdi mdi-home"></i>
+                        </span> Blacklist Search
+                      </h3>
+                      
+                  
+                    </div>
+                     <div th:if="${reg}">
+                            <div class="alert alert-info">
+                             Register Successfully !!!
+                            </div>
+                        </div>
+                        <div th:if="${edit}">
+                            <div class="alert alert-info">
+                              Update Successfully !!!
+                            </div>
+                        </div>
+                        <div th:if="${notfound}">
+                            <div class="alert alert-danger">
+                            Data not found !!!
+                            </div>
+                        </div>
+                        <div th:if="${delete}">
+                            <div class="alert alert-info">
+                              Delete Successfully !!!
+                            </div>
+                        </div>
+                    <div class="form-group">
+                      <div class="input-group" >
+                        <input type="text" class="form-control col-sm-3"  id="blacklistSearch" th:value="${bkNameorNRC}"  placeholder="Name or NRC" aria-label="Recipient's username" aria-describedby="basic-addon2" >
+                        <div class="input-group-append">
+                          <button class="btn btn-sm btn-gradient-primary" type="button" id="searchBk">Search</button>
+                        </div>                
+                      </div>
+                    </div>
+                 
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th> Name </th>
+                          <th>NRC </th>
+                          <th> Address </th>
+                          <th> Father Name </th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="blacklists: ${blacklists}" >
+                          <td th:text="${blacklists.name}">  </td>
+                          <td th:text="${blacklists.nrc}">   </td>
+                          <td th:text="${blacklists.address}"></td>
+                          <td th:text="${blacklists.fatherName}">  </td>
+                      <td><a th:href="@{detailBlacklist/{id}(id=${blacklists.blackListId})}"><span  class="mdi mdi-eye" title="View Detail"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                          <a th:href="@{updateBlacklist/{id}(id=${blacklists.blackListId})}"><span class="mdi mdi-lead-pencil" title="Edit" ></span></a></td>
+                        </tr>                                                            
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+         
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          
+          <!-- partial -->
+        </div>
+                <!-- main-panel ends -->
+                <footer th:replace="/fragment/footer.html::footer"></footer>
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

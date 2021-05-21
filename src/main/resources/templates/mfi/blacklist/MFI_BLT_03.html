@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Blacklist Edit</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+</head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+       <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="page-header">
+                      <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-info text-white mr-2">
+                          <i class="mdi mdi-home"></i>
+                        </span> Blacklist Edit
+                      </h3>
+                      
+                  
+                    </div>
+                    <form class="forms-sample" th:action="@{/updateBlacklist/{id}(id=${blackLists.blackListId})}" method="post" th:object="${blackLists}" >
+                    <input type="hidden" th:field="*{blackListId}">
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputUsername2" class="col-sm-2 col-form-label">Name *</label>
+                        <div class="col-sm-4 ">
+                          <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Name" th:field="*{name}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">NRC *</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="NRC" th:field="*{nrc}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('nrc')}" th:errors="*{nrc}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Address *</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Address" th:field="*{address}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Father Name</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Father Name" th:field="*{fatherName}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}"
+														style="color: red;"></p>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Remark</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Remark" th:field="*{remark}">
+                           <br>
+                          <p th:if="${#fields.hasErrors('remark')}" th:errors="*{remark}"
+														style="color: red;"></p>
+                        </div>
+                      </div>  	
+                      <div class="form-group row">
+                        <div class="col-sm-5"></div>
+                      <div class="col-sm-7">
+                        <!-- <button type="submit" class="btn btn-gradient-primary mr-2">Edit</button> -->
+                       
+                        <button type="submit" class="btn btn-gradient-success mr-2" >EDIT</button>
+                        <a th:href="@{/searchBlackList}"  class="btn btn-secondary">BACK</a>
+                         <!-- <button class="btn btn-light">Cancel</button> -->
+                      </div>
+                     
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+         
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+        <footer th:replace="/fragment/footer.html::footer"></footer>
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

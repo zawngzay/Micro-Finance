@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Checker Dashboard</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+     	<nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+ 			<nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+           <!-- here -->
+
+           
+            <div class="row">
+               <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                  <div class="card-body">
+                     <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-info text-white mr-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Dashboard
+              </h3>
+            </div>
+             <div class="row"> 
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body"><img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h3 class="font-weight-normal mb-3">Loan Review<i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    </h3>
+                    <h4 class="mb-5"><a th:href="@{checkerLoanList}" title="View Loans" style="text-decoration:none;
+                    color: gray;"><th:block th:text="${pendingloanList}"></th:block> Loans </a></h4>
+                    <h6 class="card-text"></h6>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h3 class="font-weight-normal mb-3">Customers <i class="mdi mdi-account-multiple mdi-24px float-right"></i>
+                    </h3>
+                    <h4 class="mb-5" th:text="${totalCus}">3555   </h4>
+                    <h6 class="card-text"></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h3 class="font-weight-normal mb-3">Total Role<i class="mdi mdi-diamond mdi-24px float-right"></i>
+                    </h3>
+                    <h4 class="mb-5" th:text="${totalRole}">2031</h4>
+                    <h6 class="card-text"></h6>
+                  </div>
+                </div>
+              </div>
+
+</div>
+
+
+          
+            <div class="row">
+                <div class="col-md-4 stretch-card grid-margin">
+                  <div class="card bg-gradient-danger card-img-holder text-white">
+                    <div class="card-body">
+                      <img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                      <h3 class="font-weight-normal mb-3">Total Loan <i class="mdi mdi-currency-usd mdi-24px float-right"></i>
+                      </h3>
+                      <h4 class="mb-5" th:text="${#numbers.formatDecimal(totalLoan,0,3)}"> 1,500,000</h4>
+                      <h6 class="card-text"></h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 stretch-card grid-margin">
+                  <div class="card bg-gradient-info card-img-holder text-white">
+                    <div class="card-body">
+                      <img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                      <h3 class="font-weight-normal mb-3">Blacklists <i class="mdi mdi-account-off mdi-24px float-right"></i>
+                      </h3>
+                      <h4 class="mb-5" th:text="${totalBl}">100</h4>
+                      <h6 class="card-text"></h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 stretch-card grid-margin">
+                  <div class="card bg-gradient-success card-img-holder text-white">
+                    <div class="card-body">
+                      <img src="../../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                      <h3 class="font-weight-normal mb-3">Users <i class="mdi mdi-clipboard-account mdi-24px float-right"></i>
+                      </h3>
+                        <h4 class="mb-5" th:text="${totalCur}">12</a></h4>
+                      <h6 class="card-text"></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+            
+          </div>
+
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+         
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+         <footer th:replace="/fragment/footer.html::footer"></footer>
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

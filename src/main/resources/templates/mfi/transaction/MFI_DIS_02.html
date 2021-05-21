@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org"
+ >
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+</head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+     <nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+            <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                  <i class="mdi mdi-home"></i>
+                </span> MFI
+              </h3>
+
+            </div>
+
+
+            <div class="row">
+
+
+
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+
+
+                    <form class="form-inline">
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Loan id">
+
+                      <button type="submit" class="btn btn-gradient-primary mb-2">Search</button>
+                    </form>
+
+                    <table class="table table-hover table-responsive">
+                      <thead>
+                        <tr>
+                          <th>Loan Info Id</th>
+                          <th> Customer Code </th>
+                          <th>Loan Amount  </th>
+                          <th> Register Date </th>
+                          <th> Period  </th>
+                          <th>Number Of Payment</th>
+                          <th>Status</th>
+                          <th>Action</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>LON_0001</td>
+
+                          <td>C001</td>
+                          <td>
+                            100000
+                          </td>
+                          <td> 4.5.2021 </td>
+                          <td> 2 </td>
+                          <td>12</td>
+                          <td>Approved</td><!-- 
+                          <th>Mg Mg</th>
+                          <th>4.5.2021</th>
+                          <th>Tun Tun</th>
+                          <td>5.8.2021</td> -->
+                          <td><a href="MFI_DIS_04.html"><span  class="mdi mdi-eye" title="View Detail"></span></a>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer th:replace="/fragment/footer.html::footer"></footer>          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="../../assets/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/dashboard.js"></script>
+    <script src="../../assets/js/todolist.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

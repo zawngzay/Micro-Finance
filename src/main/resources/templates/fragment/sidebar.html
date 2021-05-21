@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+ 
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<nav class="sidebar sidebar-offcanvas" id="sidebar" 
+		style="background-color: #039be5" th:fragment="sidebar">
+		<ul class="nav">
+
+			<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+				href="#ui-dash" aria-expanded="false" aria-controls="ui-dash"> <span
+					class="menu-title">Dashboard</span> <i class="menu-arrow"
+					style="color: white;"></i> <i
+					class="mdi mdi-elevation-decline menu-icon" style="color: white;"></i>
+			</a>
+				<div class="collapse" id="ui-dash">
+					<ul class="nav flex-column sub-menu">
+						<li class="nav-item" sec:authorize="hasAnyAuthority('CHECKER','MASTER')"><a class="nav-link"
+							th:href="@{/checker}">Checker's Dashboard</a></li>
+						<li class="nav-item" sec:authorize="hasAnyAuthority('MAKER','MASTER')"><a class="nav-link" th:href="@{/maker}">Maker's
+								Dashboard</a></li>
+					</ul>
+				</div></li>
+				
+			<li class="nav-item" sec:authorize="hasAnyAuthority('MASTER','Admin')"><a class="nav-link" data-toggle="collapse"
+				href="#ui-basic" aria-expanded="false" aria-controls="ui-basic" >
+					<span class="menu-title">Admin</span> <i class="menu-arrow"></i> <i
+					class="mdi mdi-account-key menu-icon" style="color: white;"></i>
+			</a>
+				<div class="collapse" id="ui-basic">
+					<ul class="nav flex-column sub-menu">
+						<li class="nav-item"><a class="nav-link" th:href="@{/role}">Role</a></li>
+						<li class="nav-item"><a class="nav-link" th:href="@{/user}">User</a></li>
+					</ul>
+				</div></li>
+				
+			<li class="nav-item"  sec:authorize="hasAnyAuthority('CRM','MASTER')">
+				<!-- <a class="nav-link" href="pages/icons/mdi.html"> --> <a
+				class="nav-link" data-toggle="collapse" href="#ui-crm"
+				aria-expanded="false" aria-controls="ui-crm"> <span
+					class="menu-title">CRM</span> <i class="menu-arrow"></i> <i
+					class="mdi mdi-account-check menu-icon" style="color: white;"></i>
+			</a> 
+			
+					<div class="collapse" id="ui-crm">
+						<ul class="nav flex-column sub-menu">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/customerRegister}">Customer Registration</a></li>
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/customerSearch}">Customer Search</a></li>
+						</ul>
+					</div>
+				
+
+			</li>
+			<li class="nav-item" sec:authorize="hasAnyAuthority('Loan','MASTER')">
+				<!-- <a class="nav-link" href="pages/forms/basic_elements.html"> -->
+				<a class="nav-link" data-toggle="collapse" href="#ui-loan"
+				aria-expanded="false" aria-controls="ui-loan"> <span
+					class="menu-title">Loan</span> <i class="menu-arrow"></i> <i
+					class="mdi mdi-transcribe menu-icon" style="color: white;"></i>
+			</a>
+				<div class="collapse" id="ui-loan" >
+					<ul class="nav flex-column sub-menu" >
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/loanRegister}">Loan Registration</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/loanSearch}">Loan Search</a></li>
+					</ul>
+				</div>
+			</li>
+			<li class="nav-item" sec:authorize="hasAnyAuthority('Account','MASTER')"><a class="nav-link" data-toggle="collapse"
+				href="#ui-account" aria-expanded="false" aria-controls="ui-account">
+					<span class="menu-title">Account</span> <i class="menu-arrow"></i>
+					<i class="mdi mdi-credit-card-multiple menu-icon"
+					style="color: white;"></i>
+			</a>
+				<div class="collapse" id="ui-account" >
+					<ul class="nav flex-column sub-menu">
+						<!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Loan Registration</a></li> -->
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/currentAccount}">Current Account</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/savingAccount}">Saving Account</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/loanAccount}">Loan Account</a></li>
+					</ul>
+				</div></li>
+			<li class="nav-item" sec:authorize="hasAnyAuthority('Transaction','MASTER')"><a class="nav-link" data-toggle="collapse"
+				href="#ui-transaction" aria-expanded="false"
+				aria-controls="ui-transaction"> <span class="menu-title">Transaction</span>
+					<i class="menu-arrow"></i> <i class="mdi mdi-elevator menu-icon"
+					style="color: white;"></i>
+			</a>
+				<div class="collapse" id="ui-transaction">
+					<ul class="nav flex-column sub-menu">
+						<!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Loan Registration</a></li> -->
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/deposit}">Deposit</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/withdraw}">Withdraw</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/disbursement}">Disbursement</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/repayment}">Repayment</a></li>
+					</ul>
+				</div></li>
+			<li class="nav-item" sec:authorize="hasAnyAuthority('COA','MASTER')"><a class="nav-link" th:href="@{/coa}"> <span
+					class="menu-title">COA</span> <i
+					class="mdi mdi-credit-card menu-icon" style="color: white;"></i>
+			</a></li>
+			<li class="nav-item" sec:authorize="hasAnyAuthority('Blacklist','MASTER')">
+				<!-- <a class="nav-link" href="pages/tables/basic-table.html"> --> <a
+				class="nav-link" data-toggle="collapse" href="#ui-blacklist"
+				aria-expanded="false" aria-controls="ui-blacklist"> <span
+					class="menu-title">Blacklist</span> <i class="menu-arrow"></i> <i
+					class="mdi mdi-account-off menu-icon" style="color: white;"></i>
+			</a>
+				<div class="collapse" id="ui-blacklist">
+					<ul class="nav flex-column sub-menu">
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/createBlackList}">Create Blacklist User</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/searchBlackList}">Search Blacklist User</a></li>
+					</ul>
+				</div>
+			</li>
+			<li class="nav-item" sec:authorize="hasAnyAuthority('Reports','MASTER')">
+				<!-- <a class="nav-link" href="pages/charts/chartjs.html"> --> <a
+				class="nav-link" data-toggle="collapse" href="#ui-reports"
+				aria-expanded="false" aria-controls="ui-reports"> <span
+					class="menu-title">Reports</span> <i class="menu-arrow"></i> <i
+					class="mdi mdi-chart-bar menu-icon" style="color: white;"></i>
+			</a>
+				<div class="collapse" id="ui-reports">
+					<ul class="nav flex-column sub-menu">
+						<!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Loan Registration</a></li> -->
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/triBalance}">Tri Balance</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/transactionListing}">Transation Listing</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/customerListing}">Customer Listing</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/accountListing}">Account Listing</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/overdueListing}">Overdue Listing</a></li>
+
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/loanOutstanding}">Loan Outstanding Balance</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/customerLedger}">Customer Ledger Balance</a></li>
+
+					</ul>
+				</div>
+			</li>
+
+
+		</ul>
+	</nav>
+
+</body>
+</html>

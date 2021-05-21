@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"
+  xmlns:th="http://www.thymeleaf.org">
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Loan Preview</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav th:replace="/fragment/header.html::header"></nav>      
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+         
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="page-header">
+                    <h3 class="page-title">
+                      <span class="page-title-icon bg-gradient-info text-white mr-2">
+                        <i class="mdi mdi-home"></i>
+                      </span> Loan Preview
+                    </h3>
+                    
+                
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="form-group row"> 
+                            <table class="table table-hover" id="mytable">
+                              <thead>
+                                <tr>
+  
+                                  <th> Loan Id</th>
+                                  <th> Name</th>
+                                  <th> Loan Register Date</th>
+                                  <th> Amount</th>
+                                  <th>Status </th>
+                                  <th> Action </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              <tr th:each="list :${loanList}">
+                              <td th:text="${list.LoanInfoId}"></td>
+                              <td th:text="${list.Customer.name}"></td>
+                              <td th:text="${list.registerDate}"></td>
+                              <td th:text="${list.loanAmount}"></td>
+                              <td th:text="${list.status}"></td>
+                              <th>
+                              	<a th:href="@{checkerLoanDetail/{id}(id=${list.LoanInfoId})}" title="View Detail"><i class="mdi mdi-eye"></i></a>
+                              </th>
+                              </tr>
+                                                                                       
+        
+                              </tbody>
+                            </table>
+                          </div>
+                          
+                          <div class="form-group row">       
+                            
+                               <a th:href="@{/checker}" class="btn btn-secondary" >BACK</a>
+                           
+                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+           
+            
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer th:replace="/fragment/footer.html::footer"></footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <!-- <script type="text/javascript">
+    $(document).ready( function () {
+        $('#table_id').DataTable();
+    } );
+    </script> -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

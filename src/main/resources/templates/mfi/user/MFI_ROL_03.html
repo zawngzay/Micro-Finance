@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Role Edit</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav th:replace="/fragment/header.html::header"></nav>      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+             <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="page-header">
+                    <h3 class="page-title">
+                      <span class="page-title-icon bg-gradient-info text-white mr-2">
+                        <i class="mdi mdi-home"></i>
+                      </span> Role Edit
+                    </h3>
+                    
+                
+                  </div>
+                  <form class="forms-sample" th:action="@{/roleEdit/{id}(id=${roleEdit.roleId})}" method="post" th:object="${roleEdit}">
+                    <div class="form-group row">
+                      <div class="col-sm-3"></div>
+                      <label for="exampleInputUsername2" class="col-sm-2 col-form-label" >Role Name </label>
+                      <div class="col-sm-4 ">
+                        <input type="text" class="form-control" id="exampleInputUsername2" th:field="*{roleName}" placeholder="Role Name">
+                        <br />
+                       <p th:if="${#fields.hasErrors('roleName')}" th:errors="*{roleName}"
+														style="color: red;"></p>
+													                    </div>
+                      </div>
+                      
+                     <div class="form-group row">
+                        <div class="col-sm-3"></div>
+                        <label for="gender" class="col-sm-2 col-form-label"></label>
+                       
+                        <div style="padding-left: 25px;" >
+                        <div class="form-check " >
+                          <label class="form-check-label ">
+                            <input type="radio" class="form-check-input " th:field="*{rolePosition}" name="optionsRadios" vid="gender" value="Checker"  checked> Checker </label>
+                        </div>
+                      </div>
+                      <div style="padding-left: 16px;" >
+                        <div class="form-check " >
+                          <label class="form-check-label ">
+                            <input type="radio" class="form-check-input " name="optionsRadios" th:field="*{rolePosition}"  id="gender" value="Maker" > Maker</label>
+                            <br />
+                             <p th:if="${#fields.hasErrors('rolePosition')}" th:errors="*{rolePosition}"
+														style="color: red;margin-left: -100px;"></p>
+                        </div>
+                      </div>
+                         
+                        
+                      </div>
+                   
+                    
+                    <div class="form-group row">
+                      <div class="col-sm-5"></div>
+                    <div class="col-sm-7">
+                      <!-- <button type="submit" class="btn btn-gradient-primary mr-2">Edit</button> -->
+                      <input type="submit" class="btn btn-gradient-success mr-2" value="EDIT" >
+                      <a href="/role"  class="btn btn-secondary">BACK</a>
+                       <!-- <button class="btn btn-light">Cancel</button> -->
+                    </div>
+                   
+                  </div>
+                  
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+           
+            
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer th:replace="/fragment/footer.html::footer"></footer>          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

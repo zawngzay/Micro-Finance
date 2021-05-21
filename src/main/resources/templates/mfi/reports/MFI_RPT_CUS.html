@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Customer Listing Report</title>
+<!-- plugins:css -->
+<link rel="stylesheet"
+	href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+<link rel="stylesheet"
+	href="../../assets/vendors/css/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- endinject -->
+<!-- Layout styles -->
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- End layout styles -->
+<link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+<script
+	src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+	integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+	integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet"
+	href="  https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+<link rel="stylesheet"
+	href=" https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css">
+<script>
+	$(document).ready(function() {
+		var table = $('#customerTable').DataTable({
+			fixedHeader : true
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="container-scroller">
+		<!-- partial:../../partials/_navbar.html -->
+		<nav th:replace="/fragment/header.html::header"></nav>
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<!-- partial:../../partials/_sidebar.html -->
+			<nav th:replace="/fragment/sidebar.html::sidebar"></nav>
+			<!-- partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+
+
+
+					<div class="col-12 grid-margin stretch-card">
+						<div class="card">
+							<div class="card-body">
+								<div class="page-header">
+									<h3 class="page-title">
+										<span class="page-title-icon bg-gradient-info text-white mr-2">
+											<i class="mdi mdi-home"></i>
+										</span> Customer Listing Report
+									</h3>
+
+
+								</div>
+
+
+								<div class="form-group row">
+									<div class="col-md-9"></div>
+									<div class="col-md-4">
+										<button type="button" data-toggle="modal"
+											data-target="#exampleModal" class="btn btn-gradient-primary ">Filter</button>
+										<div class="modal fade" id="exampleModal" tabindex="-1"
+											role="dialog" aria-labelledby="exampleModalLabel"
+											aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h3 class="page-title">
+															<span
+																class="page-title-icon bg-gradient-info text-white mr-2">
+																<i class="mdi mdi-home"></i>
+															</span> Customer Listing Report
+														</h3>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<form class="forms-sample" th:action="@{/customerFilter}" th:method="post">
+															<div class="form-group">
+																<label for="startDate">Start Date</label> <input
+																	type="date" class="form-control" id="startDate"
+																	placeholder="Start Date" name="start">
+															</div>
+															<div class="form-group">
+																<label for="endDate">End Date</label> <input type="date"
+																	class="form-control" id="endDate"
+																	placeholder="End Date" name="end">
+															</div>
+															<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Close</button>
+														<button type="submit" class="btn btn-gradient-primary">Search</button>
+													</div>
+														</form>
+													</div>
+													
+												</div>
+											</div>
+										</div>
+										<a th:href="@{/customerListingReportExport}"><button type="submit" class="btn btn-gradient-primary ">Export</button></a>
+
+									</div>
+
+								</div>
+								<table id="customerTable"
+									class="table table-bordered table-responsive ">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Customer Code</th>
+											<th>Customer Name</th>
+											<th>Customer NRC</th>
+											<th>Phone</th>
+											<th>Email</th>
+											<th>Date of Birth</th>
+											<th>Gender</th>
+											<th>Address</th>
+											<th>Current Job</th>
+											<th>Position</th>
+											<th>Companay Name</th>
+											<th>Monthly Income</th>
+
+											<th>Status</th>
+										
+										</tr>
+									</thead>
+									<tbody>
+									<tr th:each="list,no : ${customerList}">
+										<td th:text="${no.index + 1}"></td>
+										<td th:text="${list.customerCode}"></td>
+										<td th:text="${list.name}"></td>
+										<td th:text="${list.nrc}"></td>
+										<td th:text="${list.phone}"></td>
+										<td th:text="${list.email}"></td>
+										<td th:text="${list.dob}"></td>
+										<td th:text="${list.gender}"></td>
+										<td th:text="${list.address}"></td>
+										<td th:text="${list.currentJob}"></td>
+										<td th:text="${list.positon}"></td>
+										<td th:text="${list.companyName}"></td>
+										<td th:text="${list.monthlyIncome}"></td>
+										<td th:if="${list.delStatus}==false">ACTIVE</td>
+										<td th:if="${list.delStatus}==true">DEACTIVE</td>
+					
+									</tr>
+									</tbody>
+								</table>
+							
+
+
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer th:replace="/fragment/footer.html::footer"></footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<script src="../../assets/js/off-canvas.js"></script>
+ <script src="../../assets/js/hoverable-collapse.js"></script>
+   <script src="../../assets/js/misc.js"></script>
+    <script src="../../assets/js/file-upload.js"></script>
+
+</body>
+</html>

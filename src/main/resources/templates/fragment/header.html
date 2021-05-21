@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" th:fragment="header">
+       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <img src="../../assets/images/mfi_logo_1.svg" alt="logo" class="navbar-brand brand-logo"/>
+        <img src="../../assets/images/mfi-logo-mini.svg" alt="logo" class="navbar-brand brand-logo-mini"/>
+        </div>
+        
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu" style="color: #ffffff;"></span>
+          </button>
+          <div class="search-field d-none d-md-block">
+            <form class="d-flex align-items-center h-100" action="#">
+              <div class="input-group">
+               
+              </div>
+            </form>
+          </div>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+               
+                <div class="nav-profile-text">
+                  <p class="mb-1 text-black" sec:authentication="name">David Greymaax</p>
+                </div>
+              </a>
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="/setup">
+                  <i class="mdi mdi-cached mr-2 text-info"></i> Change Password </a>
+                <div class="dropdown-divider"></div>
+                <form th:action="@{/logout}" method="post">
+                        <input type="submit" class="btn" value="Logout"/><label ><i class="fas fa-sign-out-alt"></i></label>
+                        </form>
+              </div>
+            </li>
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button" style="color: #ffffff;"></i>
+              </a>
+            </li>
+           
+            
+            <li class="nav-item nav-settings d-none d-lg-block">
+              <a class="nav-link" href="#">
+                <i class="mdi mdi-format-line-spacing " style="color: #ffffff;"></i>
+              </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+</body>
+</html>

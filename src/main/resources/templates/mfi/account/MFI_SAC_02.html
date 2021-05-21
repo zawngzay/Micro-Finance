@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"
+ xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Saving Account Search</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+     <nav th:replace="/fragment/header.html::header"></nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav th:replace="/fragment/sidebar.html::sidebar"></nav>        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="page-header">
+                      <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-info text-white mr-2">
+                          <i class="mdi mdi-home"></i>
+                        </span>  Saving Account Search
+                      </h3>
+                      
+                  
+                    </div>
+                    
+                     <div th:if="${notfound}">
+                            <div class="alert alert-danger">
+                             Data Not Found !!!
+                            </div>
+                        </div>
+                       <div th:if="${close}">
+                            <div class="alert alert-info">
+                             Deactivate Successfully !!!
+                            </div>
+                        </div>
+                        <div th:if="${reactive}">
+                            <div class="alert alert-info">
+                           Reactivate Successfully !!!
+                            </div>
+                        </div>
+                   <form class="forms-sample" th:action="@{/savingAccountSearch}" th:method="post"> 
+                    <div class="form-group">
+                      <div class="input-group" >
+                        <input name="savingAccountNumber" type="text" class="form-control col-sm-3" placeholder="Saving Account Number" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                        <input type="submit" value="Search" class="btn btn-sm btn-gradient-primary">
+                         <!-- <a th:href="@{/crmSearch}" class="btn btn-sm btn-gradient-primary">Search</a> -->
+                          
+                        </div>
+                        
+                      </div>
+                      
+                     
+                    </div>
+                    </form>
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th> Account Number </th>
+                          <th>Customer Name </th>
+                          <th> Total Balance</th>
+                          <th> Action </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       <tr th:each="list : ${account}">
+                          <td class="py-1" th:text="${list.savingAccountNumber}">
+                          </td>
+                          <td th:text="${list.customer.name}"></td>
+                          <td th:text="${list.balance}"></td>
+                           
+                          <td><a th:href="@{savingDetail/{number}(number=${list.savingAccountNumber})}"><span  class="mdi mdi-eye" title="View Detail"></span></a></td>
+                        </tr>                                                      
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+         
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          
+          <!-- partial -->
+        </div>
+        <footer th:replace="/fragment/footer.html::footer"></footer>        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="../../assets/js/file-upload.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
